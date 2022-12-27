@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import progetto.bigdata.sparkjobexecutor.*;
+import progetto.bigdata.sparkjobexecutor.models.GeoDataClass;
 
 import java.io.IOException;
 
@@ -20,4 +21,6 @@ public class Controller {
             throw new RuntimeException(e);
         }
     }
+
+
 }
