@@ -2,17 +2,30 @@ package progetto.bigdata.sparkjobexecutor;
 
 import java.io.IOException;
 import org.apache.spark.launcher.*;
+
+import static progetto.bigdata.Constants.*;
+
+/*
+    autore: Nicola
+    realizza il codice per eseguire un job spark, viene utilizzato dal controller
+
+ */
 public class SparkJob {
 
 
-    public static int runSparkJob() throws IOException, InterruptedException{
-        Process spark = new SparkLauncher()
-                .setSparkHome("C:\\spark-3.3.1-bin-hadoop3")
-                .setAppResource("C:\\Users\\Nicola\\progettoBigData\\proveVarieSpark\\target\\scala-2.13\\provevariespark_2.13-0.1.0-SNAPSHOT.jar")
-                .setMainClass("NumeroDiHotelDiversi")
-                .setMaster("local[*]")
-                .addAppArgs("Italy")
-                .launch();
+    public static int runSparkJob(String className, String[] args) throws IOException, InterruptedException{
+        String[] tokens = className.split("\\.");
+        SparkLauncher launcher = new SparkLauncher()
+                .setSparkHome(SPARK_HOME)
+                .setAppResource(APP_JAR)
+                .setMainClass(tokens[tokens.length-1])
+                .setMaster(MASTER);
+
+        if(args != null)
+            for(String arg: args)
+                launcher.addAppArgs(arg);
+
+        Process spark = launcher.launch();
         new InputPrinter(spark.getInputStream()).start();
         new InputPrinter(spark.getErrorStream()).start();
         int exit = spark.waitFor();

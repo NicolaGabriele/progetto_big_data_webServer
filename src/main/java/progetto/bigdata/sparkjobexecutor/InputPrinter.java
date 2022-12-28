@@ -7,6 +7,10 @@ import java.io.InputStreamReader;
 
 public class InputPrinter extends Thread{
 
+    /*
+        autore: Nicola
+        classe ausiliaria che si occupa di stampare a video lo stack trace del job spark, serve per debugging
+     */
     private InputStream s;
     public InputPrinter(InputStream s){
         this.s = s;
