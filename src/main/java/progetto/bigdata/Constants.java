@@ -2,8 +2,6 @@ package progetto.bigdata;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.file.Path;
 
 public interface Constants {
@@ -12,9 +10,9 @@ public interface Constants {
         Attenzione!! sostituire con i propri path
      */
     String SPARK_HOME = "C:\\spark-3.3.1-bin-hadoop3",
-            APP_JAR ="C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\target\\scala-2.12\\progettobigdata_2.12-0.1.0-SNAPSHOT.jar",
+            APP_JAR ="C:\\progettoBigData\\progettoBigData\\target\\scala-2.12\\progettobigdata_2.12-0.1.0-SNAPSHOT.jar",
             MASTER = "local[*]",
-            RESULTS_HOME = "C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\results\\result";
+            RESULTS_HOME = "C:\\progettoBigData\\progettoBigData\\results\\result";
 
     static String buildFileName(int i){
         StringBuilder sb = new StringBuilder().append(String.valueOf(i));
