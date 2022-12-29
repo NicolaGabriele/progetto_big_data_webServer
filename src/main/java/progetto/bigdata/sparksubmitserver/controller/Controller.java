@@ -8,10 +8,7 @@ import progetto.bigdata.Constants;
 import progetto.bigdata.sparkjobexecutor.models.CoppiaHotelPunteggioMedio;
 import progetto.bigdata.sparkjobexecutor.models.GeoDataClass;
 import progetto.bigdata.sparkjobexecutor.models.WordCountItem;
-import progetto.bigdata.sparkjobexecutor.query.CoppieHotelPunteggioMedioPerNazione;
-import progetto.bigdata.sparkjobexecutor.query.GeoDataHotelsInNation;
-import progetto.bigdata.sparkjobexecutor.query.WordCountNegative;
-import progetto.bigdata.sparkjobexecutor.query.WordCountPositive;
+import progetto.bigdata.sparkjobexecutor.query.*;
 
 import java.util.List;
 
@@ -50,5 +47,11 @@ public class Controller {
         return CoppieHotelPunteggioMedioPerNazione.INSTANCE.compute(params);
     }
 
+    @GetMapping("/recensioniHotelDallaData")
+    public @ResponseBody List<String> recensioniHotelDallaData(@RequestParam String hotel, @RequestParam String days){
+        String[] params = {hotel, days};
+        Constants.deleteResultDir();
+        return RecensioniHotelDallaData.INSTANCE.compute(params);
+    }
 
 }

@@ -39,7 +39,7 @@ public interface Query<T> {
         return ret;
     }
 
-    private void read(List<T> ret, File f){
+    default void read(List<T> ret, File f){
         try{
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(new FileInputStream(f))
