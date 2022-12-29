@@ -22,7 +22,6 @@ import java.util.List;
 @RestController
 public class Controller {
 
-    //TODO
 
     @GetMapping("/geoDataHotelsInNation")
     public @ResponseBody List<GeoDataClass> geodataHotelsInNation(@RequestParam String nation){
@@ -35,6 +34,7 @@ public class Controller {
     public @ResponseBody List<WordCountItem> wordCountPositive(){
         Constants.deleteResultDir();
         return WordCountPositive.INSTANCE.compute(null);
+
     }
 
     @GetMapping("/wordCountNegative")

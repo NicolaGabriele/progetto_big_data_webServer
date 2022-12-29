@@ -1,11 +1,18 @@
 package progetto.bigdata;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
 
 public interface Constants {
 
+    /*
+        Attenzione!! sostituire con i propri path
+     */
     String SPARK_HOME = "C:\\spark-3.3.1-bin-hadoop3",
-            APP_JAR ="C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\target\\scala-2.13\\progettobigdata_2.13-0.1.0-SNAPSHOT.jar",
+            APP_JAR ="C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\target\\scala-2.12\\progettobigdata_2.12-0.1.0-SNAPSHOT.jar",
             MASTER = "local[*]",
             RESULTS_HOME = "C:\\Users\\Nicola\\progettoBigData\\progettoBigData\\results\\result";
 
@@ -19,10 +26,14 @@ public interface Constants {
 
     static void deleteResultDir(){
         File directory = new File(RESULTS_HOME);
+        try {
         if(directory.exists()) {
-            for (File f : directory.listFiles())
-                f.delete();
-            directory.delete();
+            for (String f : directory.list())
+                java.nio.file.Files.delete(Path.of(RESULTS_HOME+"\\"+f));
+            java.nio.file.Files.delete(Path.of(RESULTS_HOME));
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

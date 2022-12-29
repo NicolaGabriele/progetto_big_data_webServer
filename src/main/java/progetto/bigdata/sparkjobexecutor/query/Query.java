@@ -46,9 +46,12 @@ public interface Query<T> {
             );
             String line = br.readLine();
             while (line != null) {
-                ret.add(build(line));
+                T elem = build(line);
+                if(elem != null)
+                    ret.add(build(line));
                 line = br.readLine();
             }
+            br.close();
         }catch(IOException e){
             e.printStackTrace();
         }
