@@ -5,10 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import progetto.bigdata.Constants;
-import progetto.bigdata.sparkjobexecutor.models.CoppiaHotelNumRecensioni;
-import progetto.bigdata.sparkjobexecutor.models.CoppiaHotelPunteggioMedio;
-import progetto.bigdata.sparkjobexecutor.models.GeoDataClass;
-import progetto.bigdata.sparkjobexecutor.models.WordCountItem;
+import progetto.bigdata.sparkjobexecutor.models.*;
 import progetto.bigdata.sparkjobexecutor.query.*;
 
 import java.util.List;
@@ -65,5 +62,12 @@ public class Controller {
     public @ResponseBody List<CoppiaHotelNumRecensioni> coppieHotel_PosReviews(){
         Constants.deleteResultDir();
         return CoppieHotel_PosReviews.INSTANCE.compute(null);
+    }
+
+    @GetMapping("/averageScoreFilter")
+    public @ResponseBody List<FilteredItem> averageScoreFilter(@RequestParam String punteggio){
+        String[] params = {punteggio};
+        Constants.deleteResultDir();
+        return AverageScoreFilter.INSTANCE.compute(params);
     }
 }
