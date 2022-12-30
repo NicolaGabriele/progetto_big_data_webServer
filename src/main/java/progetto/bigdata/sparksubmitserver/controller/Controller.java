@@ -70,4 +70,11 @@ public class Controller {
         Constants.deleteResultDir();
         return AverageScoreFilter.INSTANCE.compute(params);
     }
+
+    @GetMapping("/reviewsNumberFilter")
+    public @ResponseBody List<ReviewsNumberItem> reviewsNumberFilter(@RequestParam String num){
+        String[] params = {num};
+        Constants.deleteResultDir();
+        return ReviewsNumberFilter.INSTANCE.compute(params);
+    }
 }
