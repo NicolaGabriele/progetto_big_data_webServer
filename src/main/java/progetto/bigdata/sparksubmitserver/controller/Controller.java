@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import progetto.bigdata.Constants;
+import progetto.bigdata.sparkjobexecutor.models.CoppiaHotelNumRecensioni;
 import progetto.bigdata.sparkjobexecutor.models.CoppiaHotelPunteggioMedio;
 import progetto.bigdata.sparkjobexecutor.models.GeoDataClass;
 import progetto.bigdata.sparkjobexecutor.models.WordCountItem;
@@ -54,4 +55,15 @@ public class Controller {
         return RecensioniHotelDallaData.INSTANCE.compute(params);
     }
 
+    @GetMapping("/coppieHotel_NegReviews")
+    public @ResponseBody List<CoppiaHotelNumRecensioni> coppieHotel_NegReviews(){
+        Constants.deleteResultDir();
+        return CoppieHotel_NegReviews.INSTANCE.compute(null);
+    }
+
+    @GetMapping("/coppieHotel_PosReviews")
+    public @ResponseBody List<CoppiaHotelNumRecensioni> coppieHotel_PosReviews(){
+        Constants.deleteResultDir();
+        return CoppieHotel_PosReviews.INSTANCE.compute(null);
+    }
 }
