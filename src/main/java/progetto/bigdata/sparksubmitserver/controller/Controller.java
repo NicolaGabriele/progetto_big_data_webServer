@@ -75,4 +75,11 @@ public class Controller {
         Constants.deleteResultDir();
         return ReviewsNumberFilter.INSTANCE.compute(params);
     }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/demandingClientsPerNationality")
+    public @ResponseBody List<CoppiaNazionalitàClientePunteggioMedio> demandingClientsPerNationality(){
+        Constants.deleteResultDir();
+        return DemandingClientsPerNationality.INSTANCE.compute(null);
+    }
 }
