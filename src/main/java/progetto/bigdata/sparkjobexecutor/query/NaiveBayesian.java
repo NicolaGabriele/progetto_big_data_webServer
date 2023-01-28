@@ -14,7 +14,7 @@ public enum NaiveBayesian implements Query<NaiveBayesItem> {
                 String prob1 = tokens[1];
                 String prob2 = tokens[2];
                 double pr1 = Double.valueOf(prob1.split("\\[")[1]);
-                double pr2 = Double.valueOf(prob1.split("]")[0]);
+                double pr2 = Double.valueOf(prob2.split("]")[0]);
                 double[] arr = {pr1, pr2};
                 return new NaiveBayesItem(Double.valueOf(tokens[0]), arr);
             }

@@ -87,6 +87,7 @@ public class Controller {
     @GetMapping("/naiveBayesian")
     public @ResponseBody List<NaiveBayesItem> naiveBayesian(@RequestParam String review){
         String[] params = {review};
+        System.out.println(review);
         Constants.deleteResultDir();
         return NaiveBayesian.INSTANCE.compute(params);
     }
