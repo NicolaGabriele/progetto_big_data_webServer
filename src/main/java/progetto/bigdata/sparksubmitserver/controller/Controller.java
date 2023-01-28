@@ -82,4 +82,12 @@ public class Controller {
         Constants.deleteResultDir();
         return DemandingClientsPerNationality.INSTANCE.compute(null);
     }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/naiveBayesian")
+    public @ResponseBody List<NaiveBayesItem> naiveBayesian(@RequestParam String review){
+        String[] params = {review};
+        Constants.deleteResultDir();
+        return NaiveBayesian.INSTANCE.compute(params);
+    }
 }
