@@ -87,8 +87,15 @@ public class Controller {
     @GetMapping("/naiveBayesian")
     public @ResponseBody List<NaiveBayesItem> naiveBayesian(@RequestParam String review){
         String[] params = {review};
-        System.out.println(review);
         Constants.deleteResultDir();
         return NaiveBayesian.INSTANCE.compute(params);
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/timeScoreEvolution")
+    public @ResponseBody List<TimeScoreItem> timeScoreEvolution(@RequestParam String hotel){
+        String[] params = {hotel};
+        Constants.deleteResultDir();
+        return TimeScoreEvolution.INSTANCE.compute(params);
     }
 }
