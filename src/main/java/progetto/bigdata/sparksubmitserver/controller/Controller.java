@@ -24,16 +24,18 @@ public class Controller {
     }
     @CrossOrigin(origins = "*")
     @GetMapping("/wordCountPositive")
-    public @ResponseBody List<WordCountItem> wordCountPositive(){
+    public @ResponseBody List<WordCountItem> wordCountPositive(@RequestParam String hotel){
+        String[] params = {hotel};
         Constants.deleteResultDir();
-        return WordCountPositive.INSTANCE.compute(null);
+        return WordCountPositive.INSTANCE.compute(params);
 
     }
     @CrossOrigin(origins = "*")
     @GetMapping("/wordCountNegative")
-    public @ResponseBody List<WordCountItem> wordCountNegative(){
+    public @ResponseBody List<WordCountItem> wordCountNegative(@RequestParam String hotel){
+        String[] params = {hotel};
         Constants.deleteResultDir();
-        return WordCountNegative.INSTANCE.compute(null);
+        return WordCountNegative.INSTANCE.compute(params);
     }
     @CrossOrigin(origins = "*")
     @GetMapping("/coppieHotelPunteggioMedioPerNazione")
@@ -98,4 +100,5 @@ public class Controller {
         Constants.deleteResultDir();
         return TimeScoreEvolution.INSTANCE.compute(params);
     }
+
 }
