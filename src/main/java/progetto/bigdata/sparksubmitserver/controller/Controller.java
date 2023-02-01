@@ -101,4 +101,12 @@ public class Controller {
         return TimeScoreEvolution.INSTANCE.compute(params);
     }
 
+    @CrossOrigin(origins = "*")
+    @GetMapping("/allFilters")
+    public @ResponseBody List<GeoDataClass> allFilters(@RequestParam String nation, @RequestParam String score, @RequestParam String num){
+        String[] params = {nation,score,num};
+        Constants.deleteResultDir();
+        return AllFilters.ISTANCE.compute(params);
+    }
+
 }
