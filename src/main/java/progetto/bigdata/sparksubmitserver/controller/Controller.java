@@ -102,6 +102,14 @@ public class Controller {
     }
 
     @CrossOrigin(origins = "*")
+    @GetMapping("/timeScoreEvolutionMonth")
+    public @ResponseBody List<TimeScoreItem> timeScoreEvolutionMonth(@RequestParam String hotel){
+        String[] params = {hotel};
+        Constants.deleteResultDir();
+        return TimeScoreEvolutionMonth.INSTANCE.compute(params);
+    }
+
+    @CrossOrigin(origins = "*")
     @GetMapping("/allFilters")
     public @ResponseBody List<GeoDataClass> allFilters(@RequestParam String nation, @RequestParam String score, @RequestParam String num){
         String[] params = {nation,score,num};

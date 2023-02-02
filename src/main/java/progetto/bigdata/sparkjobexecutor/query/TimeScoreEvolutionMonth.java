@@ -1,9 +1,8 @@
 package progetto.bigdata.sparkjobexecutor.query;
 
 import progetto.bigdata.sparkjobexecutor.models.TimeScoreItem;
-import progetto.bigdata.sparkjobexecutor.models.WordCountItem;
 
-public enum TimeScoreEvolution implements Query<TimeScoreItem> {
+public enum TimeScoreEvolutionMonth implements Query<TimeScoreItem> {
 
     INSTANCE {
 
