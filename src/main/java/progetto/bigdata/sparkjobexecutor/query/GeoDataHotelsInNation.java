@@ -9,7 +9,7 @@ public enum GeoDataHotelsInNation implements Query<GeoDataClass> {
         public GeoDataClass build(String line){
             String s = line.substring(1,line.length()-1);
             String[] aux = s.split(",");
-            return new GeoDataClass(aux[0],aux[1]);
+            return new GeoDataClass(aux[0],aux[1],aux[2],aux[3],aux[4]);
         }
     }
 }

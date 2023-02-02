@@ -1,6 +1,5 @@
 package progetto.bigdata.sparkjobexecutor.query;
 
-import progetto.bigdata.sparkjobexecutor.models.FilteredItem;
 import progetto.bigdata.sparkjobexecutor.models.ReviewsNumberItem;
 
 public enum ReviewsNumberFilter implements Query<ReviewsNumberItem> {
