@@ -2,19 +2,19 @@ package progetto.bigdata.sparkjobexecutor.models;
 
 public class CoppiaNazionalitàClientePunteggioMedio {
 
-    private String nazionalità;
-    private float punteggioMedio;
+    private String nazionalita;
+    private double punteggioMedio;
 
-    public CoppiaNazionalitàClientePunteggioMedio(String nazionalità, float punteggioMedio){
-        this.nazionalità = nazionalità;
+    public CoppiaNazionalitàClientePunteggioMedio(String nazionalita, double punteggioMedio){
+        this.nazionalita = nazionalita;
         this.punteggioMedio = punteggioMedio;
     }
 
-    public String getNazionalità(){
-        return nazionalità;
+    public String getNazionalita(){
+        return nazionalita;
     }
 
-    public float getPunteggioMedio(){
+    public double getPunteggioMedio(){
         return punteggioMedio;
     }
 }
